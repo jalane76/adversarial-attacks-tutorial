@@ -12,22 +12,10 @@ There are many types of adversarial attacks on virtually every system built by h
 
 Put simply, adversarial attacks are inputs to a machine learning model where the expected output seems obvious to a human, but where the model is fooled into an incorrect output.  Examples include injecting words into email to avoid spam filters, adding noise to an image, and adding noise or sounds to audio.  In this tutorial we will be concerned with adversarial attacks on simple models for computer vision.  Here are a few famous examples:
 
-TODO
-- [] Caption image
-- [] Fix footnote
-- [] Fix citation in references
- 
-![image](https://user-images.githubusercontent.com/7811157/131561314-b4f5b3bc-fd76-4887-906f-64826c6ff017.png)
+![](https://user-images.githubusercontent.com/7811157/131561314-b4f5b3bc-fd76-4887-906f-64826c6ff017.png)
 
-Bla bla <sup id="a1">[1](#f1)</sup>
-@misc{goodfellow2015explaining,
-      title={Explaining and Harnessing Adversarial Examples}, 
-      author={Ian J. Goodfellow and Jonathon Shlens and Christian Szegedy},
-      year={2015},
-      eprint={1412.6572},
-      archivePrefix={arXiv},
-      primaryClass={stat.ML}
-}
+Adding a small amount of noise causes the model to classify a panda as a gibbon. <sup id="a1">[1](#f1)</sup>
+
 
 
 ## Why do we care?
@@ -42,4 +30,4 @@ Bla bla <sup id="a1">[1](#f1)</sup>
 
 ## References
 
-<b id="f1">1</b> Footnote content here. [↩](#a1)
+<b id="f1">[1]</b> Ian J. Goodfellow, Jonathon Shlens, & Christian Szegedy. (2015). Explaining and Harnessing Adversarial Examples. [↩](#a1)
