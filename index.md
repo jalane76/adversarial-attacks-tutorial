@@ -6,6 +6,7 @@ There are many types of adversarial attacks on virtually every system built by h
 * [OpenAI](https://openai.com/blog/adversarial-example-research/)
 * [Adversarial Robustness Toolbox](https://github.com/Trusted-AI/adversarial-robustness-toolbox)  *\*We'll use this in the tutorial!*
 * [DeepMind x UCL Course](https://youtu.be/MhNcWxUs-PQ)
+* [NIST Taxonomy and Terminology](https://nvlpubs.nist.gov/nistpubs/ir/2019/NIST.IR.8269-draft.pdf)
 * [Google Scholar](scholar.google.com) for many of the original papers.
 
 ## What are adversarial attacks/examples?
