@@ -39,9 +39,9 @@ There are a few dimensions upon which adversarial attacks can be classified.  Th
 
 An attacker can have different levels of access to the model they are attacking.
 
-1. White Box Attacks: The attacker has access to the full model.
-2. Black Box Attacks: The attacker only has access to queries to input into the model and the results.  They do not know the model.
-3. Gray Box Attacks: The attacker knows what model they are attacking and uses a virtual model and white box attacks.
+1. **White Box Attacks**: The attacker has access to the full model.
+2. **Black Box Attacks**: The attacker only has access to queries to input into the model and the results.  They do not know the model.
+3. **Gray Box Attacks**: The attacker knows what model they are attacking and uses a virtual model and white box attacks.
 
 ![](boxes.png)
 
@@ -49,15 +49,15 @@ An attacker can have different levels of access to the model they are attacking.
 
 Attacks can be classified by which datasets the attacks are injected into.
 
-1. Attacks in the Training set: The attacker injects malicious data into the training set.
-2. Attacks in the Test set:  The attacker injects malicious data into the test set.
+1. **Attacks in the Training set**: The attacker injects malicious data into the training set.
+2. **Attacks in the Test set**:  The attacker injects malicious data into the test set.
 
 ### Targeted vs. Untargeted
 
 Another way to understand adversarial attacks is by whether they are targeted or not.
 
-1. Untargeted Attacks:  The goal is for the model to output an incorrect result from the attack input.  It does not matter what the actual result is as long as it differs from the correct one.
-2. Targeted Attacks:  The goal is to get the model to output a particular incorrect result due to the attack input.
+1. **Untargeted Attacks**:  The goal is for the model to output an incorrect result from the attack input.  It does not matter what the actual result is as long as it differs from the correct one.
+2. **Targeted Attacks**:  The goal is to get the model to output a particular incorrect result due to the attack input.
 
 ## Example Attacks
 
