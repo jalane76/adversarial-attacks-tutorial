@@ -29,8 +29,6 @@ Adding a sticker caused the MobileEye camera on a Tesla Model S to predict a spe
 
 Wearing the right pattern makes a person invisible to a classifier.  <sup id="a4">[4](#f4)</sup>
 
-## Why do we care?
-
 ## Taxonomy of attacks
 
 There are a few dimensions upon which adversarial attacks can be classified.  The following are some of them, although the list is neither complete, nor exhaustive.
@@ -52,6 +50,8 @@ Attacks can be classified by which datasets the attacks are injected into.
 1. **Attacks in the Training set**: The attacker injects malicious data into the training set.
 2. **Attacks in the Test set**:  The attacker injects malicious data into the test set.
 
+<font size="5" color="red">Add Image?</font>
+
 ### Targeted vs. Untargeted
 
 Another way to understand adversarial attacks is by whether they are targeted or not.
@@ -59,9 +59,40 @@ Another way to understand adversarial attacks is by whether they are targeted or
 1. **Untargeted Attacks**:  The goal is for the model to output an incorrect result from the attack input.  It does not matter what the actual result is as long as it differs from the correct one.
 2. **Targeted Attacks**:  The goal is to get the model to output a particular incorrect result due to the attack input.
 
-## Example Attacks
+<font size="5" color="red">Add Image?</font>
 
-## Example Defenses
+## Example Attack
+
+[Here](https://github.com/Trusted-AI/adversarial-robustness-toolbox/wiki/ART-Attacks) is a large list of attacks implemented in ART along with references to the papers where they were introduced.
+
+We will briefly familiarize ourselves with one of the first attacks from the literature, the *Fast Gradient Sign Method* (FGSM).  <sup id="a5">[5](#f5)</sup>  The FGSM is a white box attack that uses the gradients of the model being attacked to create adversarial examples.  In particular
+
+<p align="center">
+    <font size="5">
+        x' = x + &epsilon; * sign(&nabla;<sub>x</sub> J(&theta;, x, y))
+    </font>
+</p>
+
+where
+
+* <font size="5">x'</font>: The desired adversarial example
+* <font size="5">x</font> : The original input
+* <font size="5">y</font> : The original output
+* <font size="5">&epsilon;</font> : A multiplier to scale perturbations
+* <font size="5">&theta;</font> : The model parameters
+* <font size="5">J</font> : The loss function
+
+The basic idea is to use the gradients of the loss with respect to the input image to add small perturbations to the original image to maximize that loss.  Note that the model is already trained so the parameters, &theta;, are fixed in the calculation of the loss.  FGSM is simple and fast.  We will implement a FGSM attack in the tutorial.
+
+## Example Defense
+
+[Here](https://github.com/Trusted-AI/adversarial-robustness-toolbox/wiki/ART-Defences) is a list of defenses implemented in ART.
+
+The simplest and one of the first defenses is *Adversarial Training*.  The idea is to augment the training data with adversarial examples generated from the attack.
+
+<font size="5" color="red">Add Image</font>
+
+## Why do we care?
 
 ## Hands-on
 
@@ -76,3 +107,5 @@ Another way to understand adversarial attacks is by whether they are targeted or
 <b id="f3">[3]</b> https://www.mcafee.com/blogs/other-blogs/mcafee-labs/model-hacking-adas-to-pave-safer-roads-for-autonomous-vehicles/ [↩](#a3)
 
 <b id="f4">[4]</b> Simen Thys, Wiebe Van Ranst, & Toon Goedemé. (2019). Fooling automated surveillance cameras: adversarial patches to attack person detection. [↩](#a4)
+
+<b id="f5">[5]</b> Goodfellow, I. J., Shlens, J., & Szegedy, C. (2014). Explaining and harnessing adversarial examples. arXiv preprint arXiv:1412.6572.   [↩](#a5)
