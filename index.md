@@ -43,23 +43,27 @@ An attacker can have different levels of access to the model they are attacking.
 
 ![](boxes.png)
 
+The adversaries knowledge. (image source: [https://secml.github.io/class1/](https://secml.github.io/class1/))
+
 ### Dataset Access
 
 Attacks can be classified by which datasets the attacks are injected into.
 
+![](data-access.jpg)
 1. **Attacks in the Training set**: The attacker injects malicious data into the training set.
 2. **Attacks in the Test set**:  The attacker injects malicious data into the test set.
-
-<font size="5" color="red">Add Image?</font>
 
 ### Targeted vs. Untargeted
 
 Another way to understand adversarial attacks is by whether they are targeted or not.
 
-1. **Untargeted Attacks**:  The goal is for the model to output an incorrect result from the attack input.  It does not matter what the actual result is as long as it differs from the correct one.
-2. **Targeted Attacks**:  The goal is to get the model to output a particular incorrect result due to the attack input.
+![](untargeted.jpg)
 
-<font size="5" color="red">Add Image?</font>
+1. **Untargeted Attacks**:  The goal is for the model to output an incorrect result from the attack input.  It does not matter what the actual result is as long as it differs from the correct one.
+
+![](targeted.jpg)
+
+2. **Targeted Attacks**:  The goal is to get the model to output a particular incorrect result due to the attack input.
 
 ## Example Attack
 
