@@ -88,13 +88,15 @@ where
 
 The basic idea is to use the gradients of the loss with respect to the input image to add small perturbations to the original image to maximize that loss.  Note that the model is already trained so the parameters, &theta;, are fixed in the calculation of the loss.  FGSM is simple and fast.  We will implement a FGSM attack in the tutorial.
 
+![](fgsm.png)
+
 ## Example Defense
 
 [Here](https://github.com/Trusted-AI/adversarial-robustness-toolbox/wiki/ART-Defences) is a list of defenses implemented in ART.
 
 The simplest and one of the first defenses is *Adversarial Training*.  The idea is to augment the training data with adversarial examples generated from the attack.
 
-<font size="5" color="red">Add Image</font>
+![](adversarial-training.jpg)
 
 ## Why do we care?
 
