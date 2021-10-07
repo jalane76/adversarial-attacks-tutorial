@@ -1,4 +1,4 @@
 adversarial-robustness-toolbox
 matplotlib
 numpy
-pytorch
+torch
