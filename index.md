@@ -103,23 +103,23 @@ The simplest and one of the first defenses is **adversarial training**.  The ide
 
 Although we have improved the robustness of our model to adversarial examples there are reasons to remain skeptical about the safety of our algorithm.
 
-* It is not clear that the *training -> attacking -> retraining* cycle will ever converge to an equilibrium solution guaranteed to be "safe" from FGSM attacks.
-* FGSM is only one out of many known attacks, and it is quite likely unknown attacks exists.  Using adversarial training for every possible attack is not feasible.
-* We believe we have increased the likelihood that the results of our algorithm are more predictable, however, since our model is not particularly explainable we may have difficulty assuring a certifying organization that the model can be trusted.
-* What other concerns can you raise?
+* **Convergence** - It is not clear that the *training -> attacking -> retraining* cycle will ever converge to an equilibrium solution guaranteed to be "safe" from FGSM attacks.
+* **Multiple Attacks** - FGSM is only one out of many known attacks, and it is quite likely unknown attacks exists.  Using adversarial training for every possible attack is not feasible.
+* **Black Box** - We believe we have increased the likelihood that the results of our algorithm are more predictable, however, since our model is not particularly explainable we may have difficulty assuring a certifying organization that the model can be trusted.
+* **Others?** - What other concerns can you raise?
 
 There are many additional techniques that we can use to further improve the safety of our algorithm.  Here is a short, and not at all complete, list of techniques.
 
-* Formal methods - We could provide mathematical proof for the behavior of our algorithm.  Typically not (currently) possible with more ML methods.
-* Monitors - If we have knowledge of appropriate limits to the behavior of a system we can provide monitors that alert us to misbehavior.
-* Redundancy - We can create multiple subsystems that do the same task, or are copies, and aggregate their outputs in some way to increase the likelihood that they are correct.
-* Coverage - If we can guarantee that we have covered every possible input and the algorithm provides the correct output, then we have covered the entire behavior of the system.  This is typically not possible as the space of input/output pairs tends to be very large.
+* **Formal methods** - We could provide mathematical proof for the behavior of our algorithm.  Typically not (currently) possible with more ML methods.
+* **Monitors** - If we have knowledge of appropriate limits to the behavior of a system we can provide monitors that alert us to misbehavior.
+* **Redundancy** - We can create multiple subsystems that do the same task, or are copies, and aggregate their outputs in some way to increase the likelihood that they are correct.
+* **Coverage** - If we can guarantee that we have covered every possible input and the algorithm provides the correct output, then we have covered the entire behavior of the system.  This is typically not possible as the space of input/output pairs tends to be very large.
 
 For this tutorial we'll choose to create a simple monitor.  Runway numbers are two digit numbers indicating the runway's heading in decadegrees (10 degrees per decadegrees) with 36 indicating north, 09 east, and so forth.  If there are parallel runways at an airport, there can be an additional letter **L**eft, **R**ight, or **C**enter indicating its position.  We'll ignore parallel runways in our example.
 
 ![](runway-numbers-2.png)
 
-A diagram of a runway with a heading of 220 degrees from North.  <sup id="a6">[6](#f6)</sup>
+A diagram of a runway with a heading of 220 degrees from North.  (Image source: [https://www.radarbox.com/blog/what-do-runway-numbers-mean](https://www.radarbox.com/blog/what-do-runway-numbers-mean))
 
 Using this information, we will wrap the output of our runway number detection algorithm in a monitor that makes sure that the output is a number between 01 and 36.
 
@@ -150,5 +150,3 @@ There are many types of adversarial attacks on virtually every system built by h
 <b id="f4">[4]</b> Simen Thys, Wiebe Van Ranst, & Toon Goedemé. (2019). Fooling automated surveillance cameras: adversarial patches to attack person detection. [↩](#a4)
 
 <b id="f5">[5]</b> Goodfellow, I. J., Shlens, J., & Szegedy, C. (2014). Explaining and harnessing adversarial examples. arXiv preprint arXiv:1412.6572.   [↩](#a5)
-
-<b id="f6">[6]</b> https://www.radarbox.com/blog/what-do-runway-numbers-mean [↩](#a6)
