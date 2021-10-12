@@ -1,13 +1,12 @@
 # ML/AI CoP Adversarial Attacks Tutorial
 
-There are many types of adversarial attacks on virtually every system built by humans.  Machine learning is by no means safe from adversarial attacks.  There are many resources for learning about attack types, methods, and defenses including:
+## Motivating Example - Runway Numbers
 
-* [Wikipedia](https://en.wikipedia.org/wiki/Adversarial_machine_learning)
-* [OpenAI](https://openai.com/blog/adversarial-example-research/)
-* [Adversarial Robustness Toolbox](https://github.com/Trusted-AI/adversarial-robustness-toolbox)  *\*We'll use this in the tutorial!*
-* [DeepMind x UCL Course](https://youtu.be/MhNcWxUs-PQ)
-* [NIST Taxonomy and Terminology](https://nvlpubs.nist.gov/nistpubs/ir/2019/NIST.IR.8269-draft.pdf)
-* [Google Scholar](scholar.google.com) for many of the original papers.
+Suppose that we are tasked with developing a computer vision algorithm for detecting runway numbers in images to aid pilots during landing.  Great!  We'll just collect some images of runway numbers, split our data into train and test sets, train a deep neural network, test the model on our test set, and we're done!
+
+![](runway-numbers-1.jpg)
+
+Unfortunately for us, though fortunate for pilots and passengers, we have more work to do in order to deliver a system that is safe enough to fly.  We need to make sure that our algorithm is **robust** to errors and noise so that it can be trusted to behave predictably.  We will approach the problem of robustness from the perspective of **adversarial examples** or **attacks**.
 
 ## What are adversarial attacks/examples?
 
@@ -28,6 +27,8 @@ Adding a sticker caused the MobileEye camera on a Tesla Model S to predict a spe
 ![](patch.png)
 
 Wearing the right pattern makes a person invisible to a classifier.  <sup id="a4">[4](#f4)</sup>
+
+It is important to note that even though adversarial examples are typically presented as intentional acts by an attacking agent, the same behaviors can be elicited by random noise as is most obvious in the cases above where single pixel changes cause erroneous outputs.  Robust algorithms should be capable of predictable behavior regardless of the source of the problematic data.  We will continue discussing deliberate attack and defense strategies, but keep this notion in mind.
 
 ## Taxonomy of attacks
 
@@ -94,15 +95,49 @@ The basic idea is to use the gradients of the loss with respect to the input ima
 
 [Here](https://github.com/Trusted-AI/adversarial-robustness-toolbox/wiki/ART-Defences) is a list of defenses implemented in ART.
 
-The simplest and one of the first defenses is *Adversarial Training*.  The idea is to augment the training data with adversarial examples generated from the attack.
+The simplest and one of the first defenses is **adversarial training**.  The idea is to augment the training data with adversarial examples generated from the attack.
 
 ![](adversarial-training.jpg)
 
-## Why do we care?
+## Another Layer of Protection - Monitoring
+
+Although we have improved the robustness of our model to adversarial examples there are reasons to remain skeptical about the safety of our algorithm.
+
+* It is not clear that the *training -> attacking -> retraining* cycle will ever converge to an equilibrium solution guaranteed to be "safe" from FGSM attacks.
+* FGSM is only one out of many known attacks, and it is quite likely unknown attacks exists.  Using adversarial training for every possible attack is not feasible.
+* We believe we have increased the likelihood that the results of our algorithm are more predictable, however, since our model is not particularly explainable we may have difficulty assuring a certifying organization that the model can be trusted.
+* What other concerns can you raise?
+
+There are many additional techniques that we can use to further improve the safety of our algorithm.  Here is a short, and not at all complete, list of techniques.
+
+* Formal methods - We could provide mathematical proof for the behavior of our algorithm.  Typically not (currently) possible with more ML methods.
+* Monitors - If we have knowledge of appropriate limits to the behavior of a system we can provide monitors that alert us to misbehavior.
+* Redundancy - We can create multiple subsystems that do the same task, or are copies, and aggregate their outputs in some way to increase the likelihood that they are correct.
+* Coverage - If we can guarantee that we have covered every possible input and the algorithm provides the correct output, then we have covered the entire behavior of the system.  This is typically not possible as the space of input/output pairs tends to be very large.
+
+For this tutorial we'll choose to create a simple monitor.  Runway numbers are two digit numbers indicating the runway's heading in decadegrees (10 degrees per decadegrees) with 36 indicating north, 09 east, and so forth.  If there are parallel runways at an airport, there can be an additional letter **L**eft, **R**ight, or **C**enter indicating its position.  We'll ignore parallel runways in our example.
+
+![](runway-numbers-2.png)
+
+A diagram of a runway with a heading of 220 degrees from North.  <sup id="a6">[6](#f6)</sup>
+
+Using this information, we will wrap the output of our runway number detection algorithm in a monitor that makes sure that the output is a number between 01 and 36.
+
+## Additional Resources
+
+There are many types of adversarial attacks on virtually every system built by humans.  Machine learning is by no means safe from adversarial attacks.  There are many resources for learning about attack types, methods, and defenses including:
+
+* [Wikipedia](https://en.wikipedia.org/wiki/Adversarial_machine_learning)
+* [OpenAI](https://openai.com/blog/adversarial-example-research/)
+* [Adversarial Robustness Toolbox](https://github.com/Trusted-AI/adversarial-robustness-toolbox)  **\*We'll use this in the tutorial!**
+* [DeepMind x UCL Course](https://youtu.be/MhNcWxUs-PQ)
+* [NIST Taxonomy and Terminology](https://nvlpubs.nist.gov/nistpubs/ir/2019/NIST.IR.8269-draft.pdf)
+* [Google Scholar](scholar.google.com) for many of the original papers.
 
 ## Hands-on
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jalane76/adversarial-attacks-tutorial/blob/main/adversarial_attacks_tutorial.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jalane76/adversarial-attacks-tutorial/main)
 
 ## References
 
@@ -115,3 +150,5 @@ The simplest and one of the first defenses is *Adversarial Training*.  The idea 
 <b id="f4">[4]</b> Simen Thys, Wiebe Van Ranst, & Toon Goedemé. (2019). Fooling automated surveillance cameras: adversarial patches to attack person detection. [↩](#a4)
 
 <b id="f5">[5]</b> Goodfellow, I. J., Shlens, J., & Szegedy, C. (2014). Explaining and harnessing adversarial examples. arXiv preprint arXiv:1412.6572.   [↩](#a5)
+
+<b id="f6">[6]</b> https://www.radarbox.com/blog/what-do-runway-numbers-mean [↩](#a6)
