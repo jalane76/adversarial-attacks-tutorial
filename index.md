@@ -136,9 +136,11 @@ There are many types of adversarial attacks on virtually every system built by h
 
 ## Hands-on
 
+Coming soon!
+<!--
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jalane76/adversarial-attacks-tutorial/blob/main/adversarial_attacks_tutorial.ipynb)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jalane76/adversarial-attacks-tutorial/main)
-
+-->
 ## References
 
 <b id="f1">[1]</b> Ian J. Goodfellow, Jonathon Shlens, & Christian Szegedy. (2015). Explaining and Harnessing Adversarial Examples. [↩](#a1)
