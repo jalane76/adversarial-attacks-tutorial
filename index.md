@@ -38,9 +38,9 @@ There are a few dimensions upon which adversarial attacks can be classified.  Th
 
 An attacker can have different levels of access to the model they are attacking.
 
-1. **White Box Attacks**: The attacker has access to the full model.
-2. **Black Box Attacks**: The attacker only has access to queries to input into the model and the results.  They do not know the model.
-3. **Gray Box Attacks**: The attacker knows what model they are attacking and uses a virtual model and white box attacks.
+1. **Black Box Attacks**: The attacker only has access to queries to input into the model and the results.  They do not know the model.
+2. **Gray Box Attacks**: The attacker knows what model they are attacking and uses a virtual model and white box attacks.
+3. **White Box Attacks**: The attacker has access to the full model.
 
 ![](boxes.png)
 
@@ -137,10 +137,9 @@ There are many types of adversarial attacks on virtually every system built by h
 ## Hands-on
 
 Coming soon!
-<!--
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jalane76/adversarial-attacks-tutorial/blob/main/adversarial_attacks_tutorial.ipynb)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jalane76/adversarial-attacks-tutorial/main)
--->
+
 ## References
 
 <b id="f1">[1]</b> Ian J. Goodfellow, Jonathon Shlens, & Christian Szegedy. (2015). Explaining and Harnessing Adversarial Examples. [↩](#a1)
