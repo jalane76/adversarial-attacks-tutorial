@@ -1,4 +1,6 @@
-# ML/AI CoP Adversarial Attacks Tutorial
+---
+title: ML/AI CoP Adversarial Attacks Tutorial
+---
 
 ## Motivating Example - Runway Numbers
 
