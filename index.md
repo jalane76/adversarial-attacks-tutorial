@@ -110,9 +110,9 @@ Although we have improved the robustness of our model to adversarial examples th
 
 There are many additional techniques that we can use to further improve the safety of our algorithm.  Here is a short, and not at all complete, list of techniques.
 
-* **Formal methods** - We could provide mathematical proof for the behavior of our algorithm.  Typically not (currently) possible with more ML methods.
+* **Formal methods** - We could provide mathematical proof for the behavior of our algorithm.  Typically not (currently) possible with most deep learning methods.
 * **Monitors** - If we have knowledge of appropriate limits to the behavior of a system we can provide monitors that alert us to misbehavior.
-* **Redundancy** - We can create multiple subsystems that do the same task, or are copies, and aggregate their outputs in some way to increase the likelihood that they are correct.
+* **Redundancy/Dissimilarity** - We can create multiple subsystems that do the same task in the same way, or in different ways, and aggregate their outputs in some way to increase the likelihood that they are correct.
 * **Coverage** - If we can guarantee that we have covered every possible input and the algorithm provides the correct output, then we have covered the entire behavior of the system.  This is typically not possible as the space of input/output pairs tends to be very large.
 
 For this tutorial we'll choose to create a simple monitor.  Runway numbers are two digit numbers indicating the runway's heading in decadegrees (10 degrees per decadegrees) with 36 indicating north, 09 east, and so forth.  If there are parallel runways at an airport, there can be an additional letter **L**eft, **R**ight, or **C**enter indicating its position.  We'll ignore parallel runways in our example.
